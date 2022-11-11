@@ -37,7 +37,7 @@ public class LottoApplication {
         List<List<Integer>> lotto_ticket_list = new ArrayList<>();
 
         for(int i=0; i<int_amt/TICKET_AMT; i++){
-            List<Integer> ticket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> ticket = Randoms.pickUniqueNumbersInRange(Lotto.MIN_LOTTO_NUM, Lotto.MAX_LOTTO_NUM, Lotto.LOTTO_NUMBER_CNT);
             lotto_ticket_list.add(ticket);
         }
 

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
+    public final static int MIN_LOTTO_NUM = 1;
+    public final static int MAX_LOTTO_NUM = 45;
+    public final static int LOTTO_NUMBER_CNT = 6;
 
-    private final static int LOTTO_NUMBER_CNT = 6;
     private final static int LOTTO_LUCK_CNT = 1;
-    private final static int MIN_LOTTO_NUM = 1;
-    private final static int MAX_LOTTO_NUM = 45;
     private final static String SEPERATE_CHAR = ",";
     private final List<Integer> numbers;
     private final int lucky_number;
@@ -19,7 +19,7 @@ public class Lotto {
         List<Integer> num_list = getNumberList(numbers);
 
         this.numbers = num_list;
-        this.lucky_number = exchangeDigit(lucky_number);
+        this.lucky_number = this.exchangeDigit(lucky_number);
     }
 
     private int exchangeDigit(String numbers){
@@ -44,7 +44,13 @@ public class Lotto {
         return rtn_list;
     }
 
-    public long getWinningResult(List<Integer> ticket){
-        return ticket.stream().map(item->this.numbers.contains(item) ? 1:0).reduce(0 , Integer::sum);
+    public int getWinningResult(List<Integer> ticket){
+        int winning_cnt = (int)ticket.stream().map(item->this.numbers.contains(item) ? 1:0).reduce(0 , Integer::sum);
+
+        if(winning_cnt < 6){
+
+        }
+
+        return winning_cnt;
     }
 }
